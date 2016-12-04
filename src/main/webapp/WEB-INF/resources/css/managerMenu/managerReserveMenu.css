@@ -67,11 +67,11 @@
 	height: 23px;
     vertical-align: bottom;
     padding: 0px 0px 9px 0px;
-    font-size: 14px;    
+    font-size: 13px;    
 }
 
 .member-reservation__ticket-num {
-    width: 143px;
+    width: 123px;
 }
 
 .member-reservation__ticketing-date {

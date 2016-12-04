@@ -55,9 +55,11 @@ function ticketCancelBtnClick() {
 		day = d < 10 ? '0' + d : d,
 		thisDay = year + '.' + month + '.' + day;
 	var ticketNums = "";
+
+	var cnt = 0;
 	for(var i = 0, size = $ticketCancelBox.length; i < size; i++) {
 		if($ticketCancelBox[i].checked) {
-			
+			cnt += 1;
 			if($ticketCancelBox[i].dataset.ticketingdate.slice(0, 10) < thisDay) {
 				alert('지나간 날짜의 티켓은 취소할 수 없습니다.');
 				return;
@@ -66,6 +68,11 @@ function ticketCancelBtnClick() {
 			ticketNums += $ticketCancelBox[i].dataset.ticketNum + ',';
 		}
 		
+	}
+	
+	if(cnt == 0) {
+		alert('선택된 정보가 없습니다.');
+		return;
 	}
 	
 	var url = '/movie/mainService/managetTicketCancel',

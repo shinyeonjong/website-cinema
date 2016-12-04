@@ -137,7 +137,7 @@ public class AsyncService implements AsyncAction {
 		String result = null;
 		boolean resultBool = true;
 		System.out.println(this.params.getRequest().getRequestURL());
-		if(userLoginInfo.getUserStates() != 0) {
+		if(userLoginInfo != null && userLoginInfo.getUserStates() != 0) {
 			if(this.params.getUserPWD().equals(userLoginInfo.getUserPWD())) {
 				HttpSession session = this.params.getSession();
 				session.setAttribute("userID", userLoginInfo.getUserID());
@@ -386,7 +386,7 @@ public class AsyncService implements AsyncAction {
          System.out.println(confirmNumRandom + " : 인증번호");
          
          //TODO
-         //new SendEmail(String.valueOf(confirmNumRandom), searchIdUserEmail);
+         new SendEmail(String.valueOf(confirmNumRandom), searchIdUserEmail);
          
          //인증번호 세션에 저장
          //인증번호 저장

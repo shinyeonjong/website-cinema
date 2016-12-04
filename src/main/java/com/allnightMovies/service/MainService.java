@@ -102,21 +102,6 @@ public class MainService implements Action {
 		return mav;
 	}
 
-/*	// 로그인
-	public ModelAndView login() throws Exception {
-		UserPersonalLoginInfoDTO userLoginInfo = this.dbService.login(this.params);
-		if(userLoginInfo.getUserStates() == 1) {
-			HttpSession session = this.params.getSession();
-			session.setAttribute("userID", userLoginInfo.getUserID());
-			session.setAttribute("userStatus", 1);
-		} else if(userLoginInfo.getUserStates() == 2) {
-			HttpSession session = this.params.getSession();
-			session.setAttribute("userID", userLoginInfo.getUserID());
-			session.setAttribute("userStatus", 2);
-		}
-		
-		return this.getTemplate();
-	}*/
 	
 	// 로그아웃
 	public ModelAndView logout() throws Exception {
@@ -128,6 +113,11 @@ public class MainService implements Action {
 	public ModelAndView loginPage() throws Exception {
 		ModelAndView mav = new ModelAndView("login");
 		mav.addObject("loginResult", true);
+		return mav;
+	}
+	
+	public ModelAndView requiredManager() {
+		ModelAndView mav = new ModelAndView("requiredManager");
 		return mav;
 	}
 	
@@ -893,8 +883,8 @@ public class MainService implements Action {
 		String result = "";
 		if(questionBoardList.getIsPwd() == 1 && userStatus != 2) {
 			result = "/service/include/reCheckPwdWriteForm";
-		} else if(LoginUserID == null)  { 
-			result = "/service/include/reCheckPwdWriteForm";
+//		} else if(LoginUserID == null)  { 
+//			result = "/service/include/reCheckPwdWriteForm";
 		} else {
 			result = "/service/include/questionViewBoard";
 		}

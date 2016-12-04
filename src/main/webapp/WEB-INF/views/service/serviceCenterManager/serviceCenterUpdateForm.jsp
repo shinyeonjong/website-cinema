@@ -4,7 +4,7 @@
 
 <div class="managementQuestionBoardUpdateForm js_managementQuestionBoardUpdateContainer font">
 		<div class="managementQuestionUpdate-content">
-			<label class="managementQuestionUpdate_content">문의 등록하기</label>
+			<label class="managementQuestionUpdate_content">문의 수정하기</label>
 		</div>
 		<div class="managementQuestionBoard">
 			<div class="managementQuestionUpdateBoard-title">

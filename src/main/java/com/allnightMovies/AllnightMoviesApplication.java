@@ -12,6 +12,7 @@ import com.allnightMovies.interceptor.LoginCookieAddInterceptor;
 import com.allnightMovies.interceptor.LoginRequiredPageInterceptor;
 import com.allnightMovies.interceptor.LogoutInterceptor;
 import com.allnightMovies.interceptor.ManagerCheckInterceptor;
+import com.allnightMovies.interceptor.ManagerRequiredInterceptor;
 
 
 @SpringBootApplication
@@ -39,6 +40,16 @@ public class AllnightMoviesApplication {
 						"/movie/mainService/updateWriteForm",
 						"/movie/async/asyncService/completeUPdateWriteBoard");
 				registry.addInterceptor(new ManagerCheckInterceptor()).addPathPatterns("/**");
+				
+				registry.addInterceptor(new ManagerRequiredInterceptor()).addPathPatterns(
+						"/movie/mainService/maganerMenu",
+						"/movie/mainService/managerMovieInsertForm",
+						"/movie/mainService/managerMovieModifyForm",
+						"/movie/mainService/managerScreeningPlannedModify",
+						"/movie/mainService/managementServiceCenterWriteForm",
+						"/movie/mainService/managementReplyBoardForm"
+						
+						);
 				
 			}
 		};

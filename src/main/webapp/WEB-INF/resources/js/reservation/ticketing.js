@@ -54,7 +54,7 @@ function movieTitleClick() {
 	$movieTitle = $(this);
 	var title = $movieTitle.text().trim();
 		movieTitle = title.substr(3, title.length).trim();
-	if(screeningDate == undefined) {
+	if($screeningDate == undefined) {
 		$('.js_screeningTimeViewer').text('예매일자를 선택해주세요.');
 	} else {
 		getMovieTicketingInfo();

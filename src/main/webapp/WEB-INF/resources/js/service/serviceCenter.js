@@ -3,7 +3,6 @@ function frequentlyBoardTab() {
 	
 	var url = '/movie/mainService/serviceCenterFreQuentlyBoard'
 		cbf = function(result) {
-			console.log(result);
 			var $frequently   = $('.js_frequentlyBoardContainer');
 				
 				$frequently
@@ -811,6 +810,7 @@ function managementReplyWriteComplete() {
 
 /************************시작***************************/
 function setServiceCenter() {
+	console.log('setEvent');
 	var $container     = $('.js_serviceCenter');
 		$questionBoard = $('.js_js_questionBoardWriteContainer');
 	
@@ -872,7 +872,7 @@ function setServiceCenter() {
 function initServiceCenter() {
 	frequentlyBoardTab();
 	setServiceCenter();
-	
+	console.log('init');
 }
 	
 initServiceCenter();

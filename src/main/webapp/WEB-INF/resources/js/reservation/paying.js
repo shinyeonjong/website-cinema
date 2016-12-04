@@ -11,7 +11,7 @@ var cardType,
 
 function inputNum() {
 	var $num = $(this);
-	
+	console.log('gg');
 	$num.val($num.val().replace(/[^0-9]/g,""));
 	if($num.val().length == $num.attr('maxlength')) {
 		$num.next('.js_inputs').focus();

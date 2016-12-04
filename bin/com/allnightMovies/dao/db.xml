@@ -437,7 +437,31 @@
 		DELETE FROM USER_TICKETING_INFO
 		WHERE USER_TICKET_NUMBER=#{param1} 
 	</delete>
+		<!-- JI. MANAGER MENU : 매니저메뉴 상영일자 등록내용 검색 -->	
+	<select id="searchScreeningPlannedCnt" resultType="java.lang.Integer" parameterType="com.allnightMovies.model.data.movieInfo.ManagerScreeningPlannedUpdateDTO">
+		SELECT COUNT(*)
+		FROM MOVIE_SCREENING_PRICE
+		WHERE
+			MOVIE_SCREENING_DATE = #{movieScreeningDate} AND
+		    MOVIE_THEATHER = #{movieTheather}
+	</select>
 	
+	<!-- JI. MANAGER MENU : 매니저메뉴 상영일자 등록하기 -->	
+	<insert id="insertMovieScreeningInfo" parameterType="com.allnightMovies.model.data.movieInfo.ManagerScreeningPlannedUpdateDTO">
+		INSERT INTO MOVIE_SCREENING_PRICE (
+			MOVIE_PRICE,
+		    MOVIE_SCREENING_DATE,
+			MOVIE_SCREENING_DATETYPE,
+		    MOVIE_THEATHER,
+		    MOVIE_TITLE
+		) VALUES (
+			#{moviePrice},
+		    #{movieScreeningDate},
+ 		    TO_DATE('${movieScreeningDate2}', 'YYYY.MM.DD HH24:MI'),
+		    #{movieTheather},
+		    #{movieTitle}
+		)
+	</insert>
 <!-- JUNG. 상영시간 list -->
 	<resultMap type="com.allnightMovies.model.data.movieInfo.MovieshowTableDTO" id="MovieshowTableDTO">
 		<result column="screening_time"	property="screening_time"/>
@@ -846,7 +870,7 @@
 				WHERE MOVIE_RELEASE_DATE <![CDATA[<]]> SYSDATE AND STATUS = 1
 				ORDER BY REVIEW_EVALUATE DESC
 			    )
-			)
+			)   
 	</select>
 	
 	<select id="sortTicketing" resultType="com.allnightMovies.model.data.movieInfo.MovieCurrentFilmDTO">
