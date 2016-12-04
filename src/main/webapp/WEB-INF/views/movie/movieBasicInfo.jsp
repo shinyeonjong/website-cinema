@@ -46,7 +46,7 @@
 	<div class="intro_managerModeButtons">
 		<c:if test="${isManager}">
 			<button class="intro_managerModeBtn js_movieModifyBtn" data-movie-no="${movieBasicInfo.no}" type="button">기본정보수정</button>
-			<button class="intro_managerModeBtn js_movieInsertBtn" data-movie-no="${movieBasicInfo.no}" type="button">영화추가</button>
+			<button class="intro_managerModeBtn js_movieDeleteBtn" data-movie-no="${movieBasicInfo.no}" type="button">영화삭제</button>
 		</c:if>
 	</div>
 	<!-- 작품소개/ 스틸컷/ 평점리뷰 -->

@@ -80,7 +80,11 @@ public interface DBMapper {
 	public List<Integer> managerGetTheaterCnt();
 	public void managerTicketCancel(String ticketNum);
 	public Integer searchScreeningPlannedCnt(ManagerScreeningPlannedUpdateDTO dto);
-	public void insertMovieScreeningInfo(ManagerScreeningPlannedUpdateDTO dto);
+	public Integer insertMovieScreeningInfo(ManagerScreeningPlannedUpdateDTO dto);
+	
+/** ji. manager movie delete **/
+	public void movieDelete(Integer movieNo);
+	public int movieReleaseDateCheck(Integer movieNo);
 	
 /** jung. 상영시간표 **/
 	public List<MovieShowTimesMap> showtimes() throws Exception;

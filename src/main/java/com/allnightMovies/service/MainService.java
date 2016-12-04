@@ -598,6 +598,7 @@ public class MainService implements Action {
 		return mav;
 	}
 	
+	
 /*******ID찾기(회원정보) 수진*******/	 //TODO 수진
 	public ModelAndView searchId() throws Exception {
 		

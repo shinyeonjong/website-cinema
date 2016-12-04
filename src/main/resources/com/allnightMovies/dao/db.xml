@@ -462,6 +462,25 @@
 		    #{movieTitle}
 		)
 	</insert>
+	
+	<!-- JI. MANAGER MOVIE DELETE -->
+	<update id="movieDelete" parameterType="java.lang.Integer">
+		UPDATE MOVIE_BASIC_INFO
+        SET STATUS = 0
+        WHERE NO=#{movieNo}
+	</update>
+	
+	<select id="movieReleaseDateCheck" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        <![CDATA[
+        SELECT 
+        	CASE  
+		    WHEN TO_DATE(MOVIE_RELEASE_DATE, 'YYYY.MM.DD HH24:MI') > SYSDATE THEN 1
+		    WHEN TO_DATE(MOVIE_RELEASE_DATE, 'YYYY.MM.DD HH24:MI') < SYSDATE THEN 0
+		    END RELEASEDATECHECK
+        FROM MOVIE_BASIC_INFO
+        WHERE NO=#{movieNo}
+        ]]>
+	</select>
 <!-- JUNG. 상영시간 list -->
 	<resultMap type="com.allnightMovies.model.data.movieInfo.MovieshowTableDTO" id="MovieshowTableDTO">
 		<result column="screening_time"	property="screening_time"/>
@@ -486,6 +505,7 @@
 		    SUBSTR(MOVIE_SCREENING_DATE,12,5) AS SCREENING_TIME,
 		    MOVIE_TITLE
 		FROM MOVIE_SCREENING_PRICE 
+		WHERE MOVIE_SCREENING_DATETYPE > SYSDATE
 		ORDER BY SCREENING_DATE ASC, MOVIE_TITLE ASC, SCREENING_DATE ASC
 	</select>
 	

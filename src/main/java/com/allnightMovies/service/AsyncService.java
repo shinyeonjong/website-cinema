@@ -211,6 +211,18 @@ public class AsyncService implements AsyncAction {
 	   return async;
    }
    
+   public AsyncResult<String> movieDelete() {
+		int movieNo = this.params.getMovieNO();
+		System.out.println(movieNo);
+		this.dbService.movieDelete(movieNo);
+		String url = this.dbService.movieReleaseDateCheck(movieNo) == 1 ?
+				"/movie/mainService/screeningsPlanned" :
+				"/movie/mainService/currentFilm" ;
+		AsyncResult<String> async = new AsyncResult<String>();
+		async.setData(url);
+		return async;
+	}
+   
 /*****연종. chagePwd success check*****/   //TODO 연종
    public AsyncResult<String> chagePwdSuccessCheck() throws Exception {
       String newPWD = params.getMyInfoNewPwd();

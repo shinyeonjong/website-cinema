@@ -209,6 +209,14 @@ public class DBService {
 		dbMapper.insertMovieScreeningInfo(dto);
 	}
 	
+	public void movieDelete(Integer movieNo) {
+		dbMapper.movieDelete(movieNo);
+	}
+	
+	public Integer movieReleaseDateCheck(Integer movieNo) {
+		return dbMapper.movieReleaseDateCheck(movieNo);
+	}
+	
 /** jung. 상영시간표 **/ //TODO 수진
 	public List<MovieShowTimesMap> showtimes() throws Exception {
 		return dbMapper.showtimes();

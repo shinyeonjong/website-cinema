@@ -20,7 +20,7 @@ function setEvent() {
 		.on('click', '.js_movieModifyBtn', managerMovieModifyForm)
 		.on('click', '.js_movieIntroModifyBtn', managerMovieModifyForm)
 		.on('keyup', '.js_reviewText', reviewText)
-		.on('click', '.js_movieInsertBtn', managerMovieInsertForm)
+		.on('click', '.js_movieDeleteBtn', managerMovieDelete)
 		
 }
 
@@ -31,10 +31,17 @@ function reviewText() {
     }
 }
 
-function managerMovieInsertForm() {
-	var url = '/movie/mainService/managerMovieInsertForm';
-	
-	submit(url);
+function managerMovieDelete() {
+	var movieNo = $('.js_movieDeleteBtn').data('movieNo'),
+	    url = '/movie/async/asyncService/movieDelete',
+	    param = {
+			'movieNO' : movieNo
+		},
+	    cbf = function(result) {
+			alert('영화정보 삭제가 완료되었습니다.');
+			location.href=result.data;
+		};
+	$.post(url, param, cbf);
 }
 
 function managerMovieModifyForm() {
