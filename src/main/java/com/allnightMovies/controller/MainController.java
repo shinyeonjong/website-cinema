@@ -46,7 +46,7 @@ public class MainController {
 		mav.addObject("directory", "include");
 		mav.addObject("page", "mainPage");
 		mav.addObject("contentCSS", "mainPage");
-		mav.addObject("contentjs", "mainPage");
+//		mav.addObject("contentjs", "mainPage");
 		mav.addObject("mainEventImg", mainEventImg);
 		mav.addObject("mainEventDTO", mainEventDTO);
 		mav.addObject("NewFilmDTO", getNewFilmDTO);

@@ -9,10 +9,11 @@ function setEventsMod() {
 	$container
 		.on('click', '.js_addBtn', compAdd)
 		.on('click', '.js_screeningSubmitBtn', screeningSubmitBtnClick)
+		.on('click', '.js_screeningModifyDeleteBtn', screeningModifyDeleteBtnClick)
 }
 function compAdd() {
 	var $list = $('.js_addListUl');
-	$list.append('<li>' + $('.js_modifyCompDiv').html() + '</li>');	
+	$list.append('<li class="js_addListLi">' + $('.js_addListLi').html() + '</li>');	
 }
 
 function screeningSubmitBtnClick() {
@@ -49,6 +50,15 @@ function screeningSubmitBtnClick() {
 		}
 	$.post(url, params, cbf);
 }
+
+function screeningModifyDeleteBtnClick() {
+	if($('.js_addListLi').length > 1) {
+		$(this).parents('.js_addListLi').remove();
+	} else {
+		alert('더 이상 삭제할 수 없습니다.');
+	}
+}
+
 
 String.prototype.replaceAll = function(org, dest) {
     return this.split(org).join(dest);

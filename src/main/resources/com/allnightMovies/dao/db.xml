@@ -812,7 +812,7 @@
          USER_ID      as userID,
          USER_PWD     as userPWD,
          USER_NAME    as userName,
-         DECODE(USER_GENDER, 'female', '여자', 'male' ,'남자') as userGender,
+         USER_GENDER as userGender,
          USER_BIRTH   as userBirth,
          USER_EMAIL   as userEmail,
          USER_REGDATE as userRegDate,
@@ -973,7 +973,7 @@
 	
 <!-- MAIN PAGE -->	
 	<select id="getMainEvnetImg" resultType="com.allnightMovies.model.data.movieInfo.MainPageEventDTO">
-		SELECT MAIN_EVENT mainEventImg
+		SELECT MAIN_EVENT mainEventImg, NOTICE_NO noticeNO
 		FROM MAIN_PAGE
 	</select>
 	

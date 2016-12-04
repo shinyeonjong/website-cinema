@@ -172,6 +172,11 @@ function locationInsertMovie() {
 	submit(url);
 }
 
+function locationEventPage() {
+	var noticeNo = $(this).data('noticeNo');
+	location.href='/movie/mainService/noticeBoardView?noticeNo=' + noticeNo;
+}
+
 function setEventTemplate() {
 	var $form = $('.js_form');
 	
@@ -188,6 +193,7 @@ function setEventTemplate() {
 		 .on('click', '.js_searchIdBack',locationSearchID)
 		 .on('click', '.js_joinResult', locationMain)
 		 .on('click', '.js_mainInsertMovieBtn', locationInsertMovie)
+		 .on('click', '.js_mainEventImage', locationEventPage)
 		 
 }
 

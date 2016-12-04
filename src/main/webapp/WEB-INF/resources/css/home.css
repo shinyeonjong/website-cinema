@@ -194,7 +194,7 @@ body {
 .footer {
     flex-basis: 90px;
     font-family: 'Jeju Gothic', serif; 
-    background-color: rgba(232, 159, 161, 0.13);
+    background-color: rgb(235, 180, 187);
     color: #716263;
     padding: 40px;
 }

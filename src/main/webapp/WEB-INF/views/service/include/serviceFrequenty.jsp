@@ -34,33 +34,35 @@
 							</div>
 						</li>
 					</c:forEach>
+						<li>
+							<div class="serviceCenterFrequenty__pageButton">
+								<c:if test="${pageGroup.isPreButton()}">
+									<span class="js_preButton${search }" data-prepage="${pageGroup.viewStartPageNum - 1}" >◀</span>
+								</c:if>
+								<c:forEach begin="${pageGroup.viewStartPageNum }" end="${pageGroup.viewEndPageNum }" var="page">
+									<div class="serviceCener_paging_button">
+										<c:choose>
+											<c:when test="${checkPage == page }">
+												<span class="serviceCenterFrequenty__pageButton--active js_currentNumber${search } " data-PageNum=${page }>${page}</span>
+											</c:when>
+											
+											<c:otherwise>
+												<span class="js_pagingNumber${search }" data-currentPage=${page }>${page}</span>
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</c:forEach>
+								<c:if test="${pageGroup.isNextButton() }">
+									<span data-nextpage="${pageGroup.viewEndPageNum + 1 }"  class="js_nextButton${search }">▶</span>
+								</c:if>
+							</div>
+						</li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
 	</div>					
 
 
-	<div class="serviceCenterFrequenty__pageButton">
-		<c:if test="${pageGroup.isPreButton()}">
-			<span class="js_preButton${search }" data-prepage="${pageGroup.viewStartPageNum - 1}" >이전</span>
-		</c:if>
-		<c:forEach begin="${pageGroup.viewStartPageNum }" end="${pageGroup.viewEndPageNum }" var="page">
-			<div class="serviceCener_paging_button">
-				<c:choose>
-					<c:when test="${checkPage == page }">
-						<span class="serviceCenterFrequenty__pageButton--active js_currentNumber${search } " data-PageNum=${page }>${page}</span>
-					</c:when>
-					
-					<c:otherwise>
-						<span class="js_pagingNumber${search }" data-currentPage=${page }>${page}</span>
-					</c:otherwise>
-				</c:choose>
-			</div>
-		</c:forEach>
-		<c:if test="${pageGroup.isNextButton() }">
-			<span data-nextpage="${pageGroup.viewEndPageNum + 1 }"  class="js_nextButton${search }">다음</span>
-		</c:if>
-	</div>
 	
 	
 </div>

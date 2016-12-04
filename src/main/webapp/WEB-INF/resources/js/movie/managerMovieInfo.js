@@ -15,7 +15,6 @@ function setEvent() {
 	$container
 		.on('click', '.js_modifyCompleteBtn', modifyComplete)
 		.on('click', '.js_modifyResetBtn', modifyReset)
-		.on('click', '.js_insertMovie', insertMovie)
 		.on('keyup', '.js_basicInfoMovieTitle', checkLength)
 		.on('keyup', '.js_basicInfoMovieGenre', checkLength)
 		.on('keyup', '.js_basicInfoMovieTitle', checkLength)

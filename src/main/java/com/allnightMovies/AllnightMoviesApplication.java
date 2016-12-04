@@ -47,7 +47,8 @@ public class AllnightMoviesApplication {
 						"/movie/mainService/managerMovieModifyForm",
 						"/movie/mainService/managerScreeningPlannedModify",
 						"/movie/mainService/managementServiceCenterWriteForm",
-						"/movie/mainService/managementReplyBoardForm"
+						"/movie/mainService/managementReplyBoardForm",
+						"/movie/async/asyncService/managementReplyBoardFormComplete"
 						
 						);
 				

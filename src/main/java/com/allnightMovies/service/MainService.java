@@ -514,20 +514,14 @@ public class MainService implements Action {
 	/** 회원정보관리 : 탈퇴시키기 **/
 	public ModelAndView managerWithdrawal() {
 		this.dbService.managerWithdrawalMember(this.params.getUserID());
-		ModelAndView mav = new ModelAndView("managerMenu/managerMemberMenu");
-		List<ManagerMemberInquiryDTO> members = this.dbService.getMemberInfo();
-		
-		mav.addObject("memberList", members);
-		return mav;
+
+		return this.managePaging();
 	}
 	/** 회원정보관리 : 탈퇴 복구 **/
 	public ModelAndView managerRestore() {
 		this.dbService.managerRestoreMember(this.params.getUserID());
-		ModelAndView mav = new ModelAndView("managerMenu/managerMemberMenu");
-		List<ManagerMemberInquiryDTO> members = this.dbService.getMemberInfo();
-		
-		mav.addObject("memberList", members);
-		return mav;
+
+		return this.managePaging();
 	}
 	/** 회원정보관리 : 정보검색 **/
 	public ModelAndView searchMemberInfo() {

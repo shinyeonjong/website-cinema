@@ -39,6 +39,7 @@ a:hover {
 	width: 20%;
 	float: left; 
     height: 530px;
+    cursor: pointer;
 }
 .slider figure {
 	position: relative;
@@ -222,4 +223,3 @@ a:hover {
  	 -o-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
  	 transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
 }
-

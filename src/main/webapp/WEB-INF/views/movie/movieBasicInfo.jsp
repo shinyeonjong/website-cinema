@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="movieBasicInfo js_movieBasicInfoContainer">
-<script async="async" type="text/javascript" src="/resources/js/movie/managerMovieInfo"></script>
+<script async="async" type="text/javascript" src="/resources/js/movie/managerMovieInfo.js"></script>
 	
 	<!-- 작품소개/ 스틸컷/ 평점리뷰 -->
 	<div class="movieBasicInfo-intro">

@@ -51,7 +51,7 @@
 				<label class="reviewBoard-list__score">${reviewBoardListDTO.reviewEvaluate}점</label>
 				<label class="reviewBoard-list__date">${reviewBoardListDTO.writeDate}</label>
 			</span>
-			<textarea class="reviewContentTextarea js_reviewContents" readonly="readonly">${reviewBoardListDTO.reviewContents}</textarea>
+			<pre class="reviewContentTextarea js_reviewContents">${reviewBoardListDTO.reviewContents}</pre>
 			<label class="reviewBoard-list__userinfo js_writerID" data-write-id="${reviewBoardListDTO.reviewWriter}">${reviewBoardListDTO.reviewWriter}</label>
 			
 			<c:if test="${reviewBoardListDTO.reviewWriter == userCheck}">

@@ -298,49 +298,47 @@ function insertQuestionBoard() {
 	    		'insertTitle'    : insertTitle,
 	    		'insertTextArea' : insertTextArea,
 	    		'insertboardPWd' : insertboardPWd,
-	    		beforeSend : function(xmlHttpRequest) {
-	    			xmlHttpRequest.setRequestHeader("AJAX", "true")
+	    },
+	    cbf    = function(result) {
+	    	
+	    	if(result.success) {
+	    		$.post(url2, params2, cbf2);
+	    	} else {
+	    		if(result.data == 'async') {
+	    			alert('모두 입력 바랍니다.');
+	    		} else {
+	    			$('.js_templateBody').html(result);
 	    		}
+	    	}
 	    };
-		    cbf    = function(result) {
-		    	
-		    	if(result.success) {
-		    		$.post(url2, params2, cbf2);
-		    	} else {
-		    		if(result.data == 'async') {
-		    			alert('모두 입력 바랍니다.');
-		    		} else {
-		    			$('.js_templateBody').html(result);
-		    		}
-		    	}
-		    };
 		    
-		    url2    = '/movie/mainService/InsertAskWriteBoard',
-		    params2 = {
-		    		'insertPwdcheck' : insertPwdcheck,
-		    		'insertTitle'    : insertTitle,
-		    		'insertTextArea' : insertTextArea,
-		    		'insertboardPWd' : insertboardPWd
-		    },
-		    cbf2   = function(result2) {
-		    	var $questionBoardViewchange = $('.js_frequentlyBoardContainer');
-				$questionBoardViewchange.html(result2);
-		    }
-		    
-		    if(insertTitle == '' || insertTextArea == '') {
-		    	alert('모두입력해주세요!');
-		    	isResult    = false;
-		    } else if(insertPwdcheck == true && insertboardPWd == '') {
-		    	alert('비밀번호 입력 해주세요');
-		    	isResult    = false;
-		    } else if(insertPwdLength < 0 || insertPwdLength > 6 ) {
-		    	alert('숫자 4글자로 입력해주세요!');
-		    	$('.js_boardWriteBoardPwd').val('');
-		    	isResult = false;
-		    } else {
-		    	$.post(url, params, cbf);
-		    	isResult    = true;
-		    }
+	    url2    = '/movie/mainService/InsertAskWriteBoard',
+	    params2 = {
+	    		'insertPwdcheck' : insertPwdcheck,
+	    		'insertTitle'    : insertTitle,
+	    		'insertTextArea' : insertTextArea,
+	    		'insertboardPWd' : insertboardPWd
+	    },
+	    cbf2   = function(result2) {
+	    	var $questionBoardViewchange = $('.js_frequentlyBoardContainer');
+			$questionBoardViewchange.html(result2);
+	    }
+	    
+	    if(insertTitle == '' || insertTextArea == '') {
+	    	alert('모두입력해주세요!');
+	    	isResult    = false;
+	    } else if(insertPwdcheck == true && insertboardPWd == '') {
+	    	alert('비밀번호 입력 해주세요');
+	    	isResult    = false;
+	    } else if(insertPwdLength < 0 || insertPwdLength > 6 ) {
+	    	alert('숫자 4글자로 입력해주세요!');
+	    	$('.js_boardWriteBoardPwd').val('');
+	    	isResult = false;
+	    } else {
+	    	$.post(url, params, cbf);
+	    	isResult    = true;
+	    }
+
 	}
 
 

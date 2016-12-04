@@ -7,7 +7,7 @@
 		추가
 	</button>
 	<ul class="js_addListUl screeningModify__list">
-		<li>
+		<li class="js_addListLi">
 			<div class="js_modifyCompDiv screeningModify__comp">
 				<jsp:include page="./modifyComp.jsp"/>
 			</div>		

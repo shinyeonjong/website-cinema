@@ -18,7 +18,7 @@ function movie_date() {
 
 	 	this.classList.toggle('active');
 		this.nextElementSibling.classList.toggle('show');
-		if($(this).text() == '▼ 11.27') {
+		if($(this).text() == '▼ 12.01') {
 			if(checked == 1) {
 				$('.screening-date-panel0').css({
 				    'opacity': '0',
