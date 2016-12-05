@@ -25,6 +25,7 @@ public class MovieScreeningDateInfo {
 				this.maxScreening[2] = "31";
 			} else {
 				this.minScreening[2] = "1";
+				
 			}
 		}
 	}
