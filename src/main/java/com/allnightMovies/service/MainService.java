@@ -1142,7 +1142,7 @@ public class MainService implements Action {
 		return new ModelAndView("movie/include/managerModifyStilcut");
 	}
 	
-	/*******연종. PWD찾기 SHIN*******/ //TODO 연종
+	/*******연종. PWD찾기 SHIN*******/
 	public ModelAndView searchPwdID() throws Exception {
 		ModelAndView mav = this.getTemplate();
 		String searchPwdUserID = this.params.getSearchPwdUserID();
@@ -1466,7 +1466,7 @@ public class MainService implements Action {
 		return mav;
 	}
 	
-/*************SHIN _ 영화상세정보***********/ //TODO
+/*************SHIN _ 영화상세정보***********/
 	public ModelAndView movieDetailInfo() throws Exception {
 		ModelAndView mav = this.getTemplate();
 		
