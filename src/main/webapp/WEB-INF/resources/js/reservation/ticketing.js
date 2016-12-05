@@ -82,7 +82,7 @@ function ticketingDateClick() {
 	if(movieTitle == undefined) {
 		$('.js_screeningTimeViewer').text('영화를 선택해주세요.');
 	} else {
-		getMovieTicketingInfo();
+		getMovieTicketingInfo($screeningDate);
 	}
 	cssColor($screeningDate, '#ffd5e3');
 }
@@ -95,7 +95,9 @@ function getMovieTicketingInfo() {
 	var url = '/movie/mainService/screeningPlanned',
 		params = {
 				'screeningDate' : screeningDate,
-				'movieTitle' : movieTitle
+				'movieTitle' : movieTitle,
+				'userChoiceMovieTime' : $screeningDate.data('movie-time'),
+				'userChoiceMovieTheater' : $screeningDate.data('movie-theater')
 		},
 		cbf = function(result) {
 			$('.js_movieTime').html(result);
@@ -270,3 +272,4 @@ function init() {
 init();
 
 $('.js_userChoiceMovieTitle').click();
+$('.js_userChoiceDay').click();

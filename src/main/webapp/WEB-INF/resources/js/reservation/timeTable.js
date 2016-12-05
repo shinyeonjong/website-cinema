@@ -54,12 +54,14 @@ function locationTicketingPage() {
 	var movieTitle = $(this).data('movie-title'),
 		movieTime = $(this).data('movie-time'),
 		movieTheater = $(this).data('movie-theater'),
-		movieDate = $(this).data('movie-date');
+		movieDate = $(this).data('movie-date'),
+		movieYear = $(this).data('movie-year');
 	
 	var addParams = 'movieTitle=' + movieTitle +
 					'&movieTime=' + movieTime +
 					'&theater=' + movieTheater +
-					'&screeningDate=' + movieDate;
+					'&screeningDate=' + movieDate +
+					'&movieYear=' + movieYear;
 	location.href='/movie/mainService/ticketing?' + addParams ;
 }
 

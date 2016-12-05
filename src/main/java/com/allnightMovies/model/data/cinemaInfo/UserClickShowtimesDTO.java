@@ -8,5 +8,7 @@ public class UserClickShowtimesDTO {
 	public String movieTitle;
 	public String movieTime;
 	public int movieTheater;
-	public String movieDate;
+	public int movieYear;
+	public int movieMonth;
+	public int movieDay;
 }

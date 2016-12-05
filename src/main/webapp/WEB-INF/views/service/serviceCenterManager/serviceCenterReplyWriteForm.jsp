@@ -11,7 +11,7 @@
 				<div class="ReplyQuestionBoard-title">
 					<label class="ReplyBoardtitle js_ReplyBoardTitle">제목</label>
 					<input class="ReplyBoardwriteBoard js_ReplyBoardContent" type="text" value="[답글]: AllnightMovies입니다."readonly>
-					<input class="ReplyBoardcheck js_ReplyBoardCheck"  type="checkbox" checked><label>비밀글</label>
+					<input class="ReplyBoardcheck js_ReplyBoardCheck"  type="checkbox" disabled="disabled" checked><label>비밀글</label>
 				</div>
 				
 				<div class="ReplyQuestionBoard-sub">
@@ -22,7 +22,7 @@
 					</div>
 					<div class="ReplyQuestionBoard-pwd">
 						<label class="ReplyBoardPwd">비밀번호</label>
-						<input class="ReplyBoardwriteBoardPwd js_ReplyBoardWriteBoardPwd" value="${writepwd }" type="password" >
+						<input class="ReplyBoardwriteBoardPwd js_ReplyBoardWriteBoardPwd" value="${writepwd }" type="password" readonly="readonly">
 					</div>
 				</div>
 			</c:when>
@@ -30,8 +30,8 @@
 			<c:otherwise>
 				<div class="ReplyQuestionBoard-title">
 					<label class="ReplyBoardtitle js_ReplyBoardTitle">제목</label>
-					<input class="ReplyBoardwriteBoard js_ReplyBoardContent" type="text" value="[답글]: AllnightMovies입니다."readonly>
-					<input class="ReplyBoardcheck js_ReplyBoardCheck"  type="checkbox"><label>비밀글</label>
+					<input class="ReplyBoardwriteBoard js_ReplyBoardContent" type="text" value="[답글]: AllnightMovies입니다." readonly>
+					<input class="ReplyBoardcheck js_ReplyBoardCheck"  type="checkbox" disabled="disabled" ><label>비밀글</label>
 				</div>
 				<div class="ReplyQuestionBoard-sub">
 					<div class="ReplyQuestionBoard_subject">

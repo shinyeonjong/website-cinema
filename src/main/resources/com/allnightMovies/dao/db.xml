@@ -499,6 +499,7 @@
 
 	<resultMap type="com.allnightMovies.model.data.movieInfo.MovieShowTimesMap" id="MovieShowTimesMap">
 		<result column="screening_Date" property="screening_Date" />
+		<result column="screeningYear" property="screeningYear"/>
 		<collection property="movieShowTitleDTO" resultMap="MovieShowTitleDTO"/>	
 	</resultMap>
 	
@@ -506,6 +507,7 @@
 	<select id="showtimes" resultMap="MovieShowTimesMap" parameterType="java.lang.String"> 
 		SELECT 
 		    DISTINCT SUBSTR(MOVIE_SCREENING_DATE,6,5) AS SCREENING_DATE,
+		    SUBSTR(MOVIE_SCREENING_DATE, 0,4) SCREENINGYEAR,
 		    MOVIE_THEATHER,
 		    SUBSTR(MOVIE_SCREENING_DATE,12,5) AS SCREENING_TIME,
 		    MOVIE_TITLE

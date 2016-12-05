@@ -180,4 +180,8 @@ public class Params {
 	private String movieTitles;
 	private String dateTimes;
 	private String prices;
+	
+	private int movieYear;
+	private String userChoiceMovieTime;
+	private int userChoiceMovieTheater;
 }

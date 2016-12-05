@@ -235,23 +235,33 @@ public class MainService implements Action {
 		System.out.println(this.params.getMovieTime());
 		System.out.println(this.params.getMovieTitle());
 		System.out.println(this.params.getTheater());
-		System.out.println(this.params.getScreeningDate());
+		System.out.println("getScreeningDate : " + this.params.getScreeningDate());
 		this.params.setDirectory("reservation/ticketing");
 		this.params.setPage("ticketing");
 		this.params.setContentCSS("reservation/ticketing");
 		this.params.setContentjs("reservation/ticketing");
 		
+		int movieMonth = 0;
+		int movieDay = 0;
+		
 		MovieScreeningDateInfo screeningDate = this.dbService.getMaxScreeningDate();
 		screeningDate.setScreeningDate();
-		
+		if(this.params.getScreeningDate() != null) {
+			String[] movieMonthDate = this.params.getScreeningDate().split("\\.");
+			System.out.println("split된 정보 : " + this.params.getScreeningDate());
+			movieMonth = Integer.parseInt(movieMonthDate[0]);
+			movieDay = Integer.parseInt(movieMonthDate[1]);
+		}
 		UserClickShowtimesDTO dto = new UserClickShowtimesDTO();
 		dto.setMovieTime(this.params.getMovieTime())
 		   .setMovieTitle(this.params.getMovieTitle())
 		   .setMovieTheater(this.params.getTheater())
-		   .setMovieDate(this.params.getScreeningDate());
+		   .setMovieYear(this.params.getMovieYear())
+		   .setMovieMonth(movieMonth)
+		   .setMovieDay(movieDay);
 		
 		ModelAndView mav = this.getTemplate();
-		mav.addObject("cal", new MonthCalendar());
+		mav.addObject("cal", this.params.getMovieYear() != 0 ? new MonthCalendar(dto.getMovieYear(), dto.getMovieMonth()) : new MonthCalendar());
 		mav.addObject("screening", screeningDate);
 		mav.addObject("movieTitle", this.dbService.getMovieTitle());
 		mav.addObject("userChoiceInfo", dto);
@@ -271,7 +281,12 @@ public class MainService implements Action {
 	public ModelAndView screeningPlanned() {
 		ModelAndView mav = new ModelAndView("reservation/ticketing/screeningPlanned");
 		List<TicketingMovieTimeInfo> list = this.dbService.getMovieTime(this.params.getMovieTitle(), this.params.getScreeningDate());
+		UserClickShowtimesDTO dto = new UserClickShowtimesDTO();
+		dto.setMovieTime(this.params.getUserChoiceMovieTime())
+		   .setMovieTheater(this.params.getUserChoiceMovieTheater());
+		
 		mav.addObject("movieTimeList", list);
+		mav.addObject("userChoiceInfo", dto);
 		return mav;
 	}
 	
@@ -542,7 +557,6 @@ public class MainService implements Action {
 		String userID = "%" + (this.params.getUserID() == null ? "" : this.params.getUserID()) + "%";
 		String userName = "%" + (this.params.getUserName() == null ? "" : this.params.getUserName()) + "%";
 		String userBirth = "%" + (this.params.getUserBirth() == null ? "" : this.params.getUserBirth()) + "%";
-		System.out.println(userName);
 		List<ManagerMemberInquiryDTO> searchUserList = this.dbService.searchMemberInfo(userID, userName, userBirth);
 
 		mav.addObject("memberList", searchUserList);
@@ -690,7 +704,6 @@ public class MainService implements Action {
 				}
 			}
 		}
-		System.out.println("showTimes 옵니다.");
 		ModelAndView mav = this.getTemplate();
 		mav.addObject("movieTimeTable", movieTimeTable);
 		return mav;
@@ -834,7 +847,6 @@ public class MainService implements Action {
 		int questionBoard = this.params.getQuestionBoard();
 		
 		int totQuestionBoardCount = this.dbService.questionBoardCount();
-		System.out.println(totQuestionBoardCount + " : 총수");
 		Paging questionBoardPaging = new Paging(totQuestionBoardCount, 7, questionBoard , 3);
 		questionBoardPaging.setBoardPaging();
 		
@@ -965,9 +977,6 @@ public class MainService implements Action {
 		HttpSession session = this.params.getSession();
 		String LoginUserID = (String)session.getAttribute("userID");
 		
-		//System.out.println(user_Id);
-		//System.out.println(write_date);
-
 		CinemaQuestionBoardDTO cinemaQuestionBoardDTO = new CinemaQuestionBoardDTO();
 
 			cinemaQuestionBoardDTO.setTitle(title);
@@ -1069,9 +1078,6 @@ public class MainService implements Action {
 		String question = this.params.getQuestion();
 		String asked    = this.params.getAsked();
 		String no       = this.params.getNo();
-		System.out.println("관리자가 수정한 제목 : "  + question);
-		System.out.println("관리자가 수정한 내용: "   + asked);
-		System.out.println("관리가자 수정할 번호 : "  + no);
 
 		CinemaFrequentlyBoardDTO completeBoardForm = new CinemaFrequentlyBoardDTO();
 			completeBoardForm.setQUESTION(question);
@@ -1086,8 +1092,6 @@ public class MainService implements Action {
 	public ModelAndView managementDeleteBoardComplete() throws Exception {
 		
 		String no = this.params.getNo();
-		System.out.println();
-		System.out.println("관리자가 삭제할 번호 : " + no);
 		this.dbService.managementDeleteFormComplete(no);
 		ModelAndView mav = this.serviceCenterFreQuentlyBoard();
 		return mav;
@@ -1098,8 +1102,6 @@ public class MainService implements Action {
 			ModelAndView mav = new ModelAndView("/service/serviceCenterManager/serviceCenterReplyWriteForm");
 			String userQuestionTitle = this.params.getUserQuestionTitle();
 			Integer questionBoardNum = this.params.getQuestionBoardNum();
-			System.out.println(questionBoardNum +" : 사용자의 글번호");
-			System.out.println(userQuestionTitle + " : 사용자가 쓴 제목 가져오기");
 			
 			CinemaQuestionBoardDTO CinemaQuestionBoardDTO = this.dbService.questionBoardList(questionBoardNum);
 			String no 		  = CinemaQuestionBoardDTO.getNo();
@@ -1111,9 +1113,6 @@ public class MainService implements Action {
 			String replyNo    = CinemaQuestionBoardDTO.getReplyNo();
 			String replyStep  = CinemaQuestionBoardDTO.getReplyStep();
 			String replyDepth = CinemaQuestionBoardDTO.getReplyDepth();
-//			
-			System.out.println(setPwd + " :비밀글이냐");
-//			
 			mav.addObject("no", no);
 			mav.addObject("title", title);
 			mav.addObject("content", content);
@@ -1131,11 +1130,9 @@ public class MainService implements Action {
 		Integer writePwd  = this.params.getReplyPwd() == null ? 0 : this.params.getReplyPwd();
 		int isPwd     = this.params.isReplytPwdcheck() == true ? 1 : 0;
 		
-		System.out.println(writePwd + ": qlalfqjsgh");
 		HttpSession session = this.params.getSession();
 		String user_id = (String)session.getAttribute("userID");
 		
-		System.out.println(user_id + " : 누구");
 		String title = this.params.getReplyTitle();
 		String content = this.params.getReplyContent();
 		String replyNo = this.params.getReplyNo();
@@ -1152,7 +1149,6 @@ public class MainService implements Action {
 
 	
 	public ModelAndView managerStillCutModify() {
-		System.out.println("managerStillCutModify : 여기");
 		return new ModelAndView("movie/include/managerModifyStilcut");
 	}
 	
@@ -1322,7 +1318,6 @@ public class MainService implements Action {
 		
 		Paging2 paging = new Paging2();
 		paging.makePaging(totalList, noticePage, 10, 10);
-		System.out.println("notice()");
 		List<CinemaNoticeBoardDTO> noticeDTO = this.dbService.getCinemaNoticeBoardDTO(paging.getStartPageList(), paging.getEndPageList());
 		mav.addObject("noticeDTO", noticeDTO);
 		mav.addObject("paging", paging);
@@ -1623,7 +1618,6 @@ public class MainService implements Action {
 			this.dbService.deleteReview(reviewNo);
 		}
 		
-		System.out.println("관리자  >> " + userID.equals("AllnightMovies"));
 		List<MovieReviewBoard> reviewBoardListDTO = this.dbService.getReviewBoardList(paging.getStartPageList(), paging.getEndPageList(), movieTitle);
 		mav.addObject("reviewBoardListDTO", reviewBoardListDTO);
 		mav.addObject("reviewBoardCount", reviewBoardDTO.size());

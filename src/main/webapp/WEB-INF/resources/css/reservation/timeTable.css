@@ -110,10 +110,9 @@ button.screening-date-btn0 {
 .movie__room1 {
 	display: inline-block;
 	width:15%;
-	background-color:
 	opacity: 1.0;
     filter: alpha(opacity=50);
-	
+	cursor: pointer;
 }
 	
 .movie__room1:hover {

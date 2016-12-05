@@ -26,7 +26,8 @@
 							data-movie-title="${movieTitleDTO.getMovie_title()}" 
 							data-movie-time="${movieTimeTableInfo.getScreening_time()}"
 							data-movie-theater="${movieTimeTableInfo.getMovie_theather()}"
-							data-movie-date="${movieTimeTable.getScreening_Date() }">
+							data-movie-date="${movieTimeTable.getScreening_Date() }"
+							data-movie-year="${movieTimeTable.screeningYear }">
 								${movieTimeTableInfo.getScreening_time()}(${movieTimeTableInfo.getMovie_theather()}관)
 							</span>
 						</c:forEach>

@@ -30,13 +30,28 @@
 								<c:when test="${(cal.year >= screening.minScreening[0] && cal.year <= screening.maxScreening[0]) 
 											&&  (cal.month >= screening.minScreening[1] && cal.month <= screening.maxScreening[1])
 											&&  (day >= screening.minScreening[2] && day <= screening.maxScreening[2])}">
-
-									<td class="
-										js_ticketingDateClick 
-										calendar__day-background 
-										cursor 
-										calendar__day-color-possible
-										calendar__day-hover-background">
+									<c:choose>
+										<c:when test="${day == userChoiceInfo.movieDay }">
+											<td class="
+												js_ticketingDateClick 
+												js_userChoiceDay 
+												calendar__day-background 
+												cursor 
+												calendar__day-color-possible
+												calendar__day-hover-background"
+												data-movie-time="${userChoiceInfo.movieTime }"
+												data-movie-theater="${userChoiceInfo.movieTheater }">
+										</c:when>
+										
+										<c:otherwise>
+											<td class="
+												js_ticketingDateClick 
+												calendar__day-background 
+												cursor 
+												calendar__day-color-possible
+												calendar__day-hover-background">
+										</c:otherwise>
+									</c:choose>
 										
 										${day }
 									
