@@ -30,6 +30,7 @@
 								<c:when test="${(cal.year >= screening.minScreening[0] && cal.year <= screening.maxScreening[0]) 
 											&&  (cal.month >= screening.minScreening[1] && cal.month <= screening.maxScreening[1])
 											&&  (day >= screening.minScreening[2] && day <= screening.maxScreening[2])}">
+
 									<td class="
 										js_ticketingDateClick 
 										calendar__day-background 

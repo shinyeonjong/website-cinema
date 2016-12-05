@@ -10,7 +10,18 @@ function setEventsMod() {
 		.on('click', '.js_addBtn', compAdd)
 		.on('click', '.js_screeningSubmitBtn', screeningSubmitBtnClick)
 		.on('click', '.js_screeningModifyDeleteBtn', screeningModifyDeleteBtnClick)
+		.on('change', '.js_selectDate', selectDateCheck)
 }
+
+function selectDateCheck() {
+	var releaseDate = $('.js_selectMovieTitle').children("option:selected").data('movieScreeningDate');
+	if(releaseDate > $(this).val()) {
+		alert('개봉일자 : ' + $('.js_selectMovieTitle').children("option:selected").data('movieScreeningDate')
+				+ '\n개봉일자 이전은 등록할 수 없습니다.');
+		$(this).val(releaseDate);
+	}
+}
+
 function compAdd() {
 	var $list = $('.js_addListUl');
 	$list.append('<li class="js_addListLi">' + $('.js_addListLi').html() + '</li>');	

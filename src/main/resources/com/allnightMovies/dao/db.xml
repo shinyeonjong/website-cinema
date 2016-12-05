@@ -341,6 +341,11 @@
 		WHERE RNUM BETWEEN #{param1} AND #{param2}
 	</select>
 	
+	<!-- JI. MANAGER MENU : 매니저메뉴 예매정보 영화제목들 가져오가 -->
+	<select id="getManagerMovieTitleScreeningDate" resultType="com.allnightMovies.model.data.movieInfo.ManagerMovieTimeAddDTO">
+		SELECT MOVIE_TITLE movieTitle, MOVIE_RELEASE_DATE movieReleaseDate
+		FROM MOVIE_BASIC_INFO
+	</select>
 	
 	
 	<!-- JI. MANAGER MENU : 매니저메뉴 유저 검색 -->
@@ -636,39 +641,39 @@
 
 <!-- 수진 . 문의사항게시판 전체 뽑아오기 -->	
 	<select id="questionBoardList" resultType="com.allnightMovies.model.data.cinemaInfo.CinemaQuestionBoardDTO" parameterType="java.lang.Integer">
-					SELECT * FROM (
-		      				SELECT 
-		      				NO, 
-		      				TITLE, 
-		      				CONTENT, 
-		      				USER_ID, 
-		      				WRITE_DATE, 
-		      				WRITEPWD, 
-		      				ISPWD, 
-		      				REPLYNO, 
-		      				REPLYSTEP, 
-		      				REPLYDEPTH,
-		      				WRITESTATUS,
-	      					ROWNUM RNUM 
-	      				FROM (
-	              			 SELECT 
-	              			 NO, 
-	              			 TITLE, 
-	              			 TO_CHAR(WRITE_DATE, 'MM/DD') AS WRITE_DATE, 
-	              			 USER_ID, 
-	              			 CONTENT, 
-	              			 WRITEPWD, 
-	              			 ISPWD,
-	              			 REPLYNO, 
-	              			 REPLYSTEP, 
-	              			 REPLYDEPTH,
-	              			 WRITESTATUS
-              			 FROM CINEMA_ASKED_BOARD 
-						 WHERE WRITESTATUS = 1
-               			  ORDER BY REPLYNO DESC, REPLYSTEP ASC
-	           			 )		
-	     			 )    
-	      			WHERE NO = #{param1}
+		SELECT * 
+		FROM (
+			SELECT 
+				NO, 
+				TITLE, 
+				CONTENT, 
+				USER_ID, 
+				WRITE_DATE, 
+				WRITEPWD, 
+				ISPWD, 
+				REPLYNO, 
+				REPLYSTEP, 
+				REPLYDEPTH,
+				WRITESTATUS,
+				ROWNUM RNUM 
+			FROM (
+				SELECT 
+					NO, 
+					TITLE, 
+					TO_CHAR(WRITE_DATE, 'MM/DD') AS WRITE_DATE, 
+					USER_ID, 
+					CONTENT, 
+					WRITEPWD, 
+					ISPWD,
+					REPLYNO, 
+					REPLYSTEP, 
+					REPLYDEPTH,
+					WRITESTATUS
+        		FROM CINEMA_ASKED_BOARD 
+				WHERE WRITESTATUS = 1
+        		ORDER BY REPLYNO DESC, REPLYSTEP ASC
+			)		
+		) WHERE NO = #{param1}
 	</select>
 
 <!-- 수진 . 문의사항 글등록 -->

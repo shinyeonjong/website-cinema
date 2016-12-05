@@ -268,3 +268,5 @@ function init() {
 }
 
 init();
+
+$('.js_userChoiceMovieTitle').click();

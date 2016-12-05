@@ -50,6 +50,19 @@ function screeningPlannedAdd() {
 	);
 }
 
+function locationTicketingPage() {
+	var movieTitle = $(this).data('movie-title'),
+		movieTime = $(this).data('movie-time'),
+		movieTheater = $(this).data('movie-theater'),
+		movieDate = $(this).data('movie-date');
+	
+	var addParams = 'movieTitle=' + movieTitle +
+					'&movieTime=' + movieTime +
+					'&theater=' + movieTheater +
+					'&screeningDate=' + movieDate;
+	location.href='/movie/mainService/ticketing?' + addParams ;
+}
+
 function setShowTimes() {
 	var $container = $('.js_showtimeTableConatainer');
 	var $showTime       = $('.js_showClickTimeTable');
@@ -58,7 +71,8 @@ function setShowTimes() {
 	
 		$container
 			.on('click', '.js_showClickTimeTable' ,movie_date)
-			.on('click', '.js_screeningPlannedAdd', screeningPlannedAdd)	
+			.on('click', '.js_screeningPlannedAdd', screeningPlannedAdd)
+			.on('click', '.js_movieroom1', locationTicketingPage)
 }
 
 function initShowTimes() {

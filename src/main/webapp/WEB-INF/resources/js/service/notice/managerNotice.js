@@ -33,6 +33,8 @@ function insertNotice(e) {
 			alert('글 제목을 입력해 주세요');
 		} else if(managerNoticeContents == '') {
 			alert('글 내용을 입력해 주세요');
+		} else if(managerNoticeTitle.length > 32) {
+			alert('제목은 30자까지만 입력이 가능합니다.');
 		} else {
 			url	   = '/movie/async/asyncService/managerInsertNotice',
 			params = {

@@ -22,7 +22,11 @@
 							${movieTitleDTO.getMovie_title()}
 						</span>
 						<c:forEach items ="${movieTitleDTO.getMovieshowTableDTO()}" var="movieTimeTableInfo">
-							<span class="movie__room1 js_movieroom1">
+							<span class="movie__room1 js_movieroom1" 
+							data-movie-title="${movieTitleDTO.getMovie_title()}" 
+							data-movie-time="${movieTimeTableInfo.getScreening_time()}"
+							data-movie-theater="${movieTimeTableInfo.getMovie_theather()}"
+							data-movie-date="${movieTimeTable.getScreening_Date() }">
 								${movieTimeTableInfo.getScreening_time()}(${movieTimeTableInfo.getMovie_theather()}관)
 							</span>
 						</c:forEach>

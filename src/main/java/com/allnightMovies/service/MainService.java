@@ -25,6 +25,8 @@ import com.allnightMovies.model.data.cinemaInfo.CinemaNoticeSearchBoardDTO;
 import com.allnightMovies.model.data.cinemaInfo.CinemaQuestionBoardDTO;
 import com.allnightMovies.model.data.cinemaInfo.CinemaSeatDTO;
 import com.allnightMovies.model.data.cinemaInfo.CinemaSeatReserveInfo;
+import com.allnightMovies.model.data.cinemaInfo.UserClickShowtimesDTO;
+import com.allnightMovies.model.data.movieInfo.ManagerMovieTimeAddDTO;
 import com.allnightMovies.model.data.movieInfo.MovieBasicInfo;
 import com.allnightMovies.model.data.movieInfo.MovieBasicInfoCast;
 import com.allnightMovies.model.data.movieInfo.MovieCurrentFilmDTO;
@@ -230,6 +232,10 @@ public class MainService implements Action {
 	
 /*****은정. ticketing *****/
 	public ModelAndView ticketing() throws Exception {
+		System.out.println(this.params.getMovieTime());
+		System.out.println(this.params.getMovieTitle());
+		System.out.println(this.params.getTheater());
+		System.out.println(this.params.getScreeningDate());
 		this.params.setDirectory("reservation/ticketing");
 		this.params.setPage("ticketing");
 		this.params.setContentCSS("reservation/ticketing");
@@ -238,10 +244,17 @@ public class MainService implements Action {
 		MovieScreeningDateInfo screeningDate = this.dbService.getMaxScreeningDate();
 		screeningDate.setScreeningDate();
 		
+		UserClickShowtimesDTO dto = new UserClickShowtimesDTO();
+		dto.setMovieTime(this.params.getMovieTime())
+		   .setMovieTitle(this.params.getMovieTitle())
+		   .setMovieTheater(this.params.getTheater())
+		   .setMovieDate(this.params.getScreeningDate());
+		
 		ModelAndView mav = this.getTemplate();
 		mav.addObject("cal", new MonthCalendar());
 		mav.addObject("screening", screeningDate);
 		mav.addObject("movieTitle", this.dbService.getMovieTitle());
+		mav.addObject("userChoiceInfo", dto);
 		return mav;
 	}
 		
@@ -591,7 +604,7 @@ public class MainService implements Action {
 	
 	public ModelAndView managerScreeningPlannedModify() throws Exception {
 		ModelAndView mav = this.getTemplate();
-		List<String> movieList = this.dbService.managerGetMovieTitle();
+		List<ManagerMovieTimeAddDTO> movieList = this.dbService.getManagerMovieTitleScreeningDate();
 		List<Integer> theaterList = this.dbService.managerGetTheaterCnt();
 		mav.addObject("movieList", movieList);
 		mav.addObject("theaterList", theaterList);
@@ -870,16 +883,9 @@ public class MainService implements Action {
 			isUserConfirm=true;
 		}
 		
-		System.out.println(userStatus + " : 로그ㄷ인한사람 상태");
-		System.out.println(questionBoardList.getIsPwd() + " : ??");
-		System.out.println(LoginUserID + " ??"); //로그인 한사람.
-		System.out.println(isUserRight + " : ??"); //게시글 쓴사람
-		
 		String result = "";
 		if(questionBoardList.getIsPwd() == 1 && userStatus != 2) {
 			result = "/service/include/reCheckPwdWriteForm";
-//		} else if(LoginUserID == null)  { 
-//			result = "/service/include/reCheckPwdWriteForm";
 		} else {
 			result = "/service/include/questionViewBoard";
 		}
@@ -1007,11 +1013,19 @@ public class MainService implements Action {
 		mav.addObject("contentjs", "service/service/serviceCenter");
 		return mav;
 	}
-	
+	// TODO 수진 : 여기서 아무것도 안넘겨주니 confirmBoardCheck.jsp 에서 아무것도 체크할 수 없는 것.
 	public ModelAndView insertPwdCheck() throws Exception {
 		ModelAndView mav = new ModelAndView("/service/include/confirmBoardCheck");
 		Integer questionBoardNum = this.params.getQuestionBoardNum();
 		CinemaQuestionBoardDTO questionBoardList = this.dbService.questionBoardList(questionBoardNum);
+		
+		// 은정 변경사항--------------------------------
+		String loginUserID = (String) this.params.getSession().getAttribute("userID");
+		boolean resultBool = loginUserID.equals(questionBoardList.getUser_Id()) ? true : false;
+		
+		
+		mav.addObject("resultBool", resultBool);
+		//---------------------------------------------
 		
 		mav.addObject("questionBoardList", questionBoardList);
 		return mav;

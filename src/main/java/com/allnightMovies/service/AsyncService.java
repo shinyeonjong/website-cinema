@@ -542,7 +542,6 @@ public class AsyncService implements AsyncAction {
 	
 	//수진. 문의사항 글 등록시 입력한 비밀번호 체크
 	public AsyncResult<Boolean> insertPwdCheck() throws Exception {
-		ModelAndView mav = new ModelAndView("/service/include/confirmBoardCheck");
 		Integer questionBoardNum = this.params.getQuestionBoardNum();
 		Integer userInsertPwd   = this.params.getUserInsertPwd(); //비번체크확인   
 		

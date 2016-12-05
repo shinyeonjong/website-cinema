@@ -108,7 +108,7 @@ function searchQuestionBoard() {
 					.css('display', 'none');
 			};
 			if(userSearchInput == '') {
-				alert('입력바랍니다.');
+				alert('검색하실 단어를 입력해주세요.');
 				return false;
 			}
 			$.post(url, params, cbf);	
@@ -327,6 +327,8 @@ function insertQuestionBoard() {
 	    if(insertTitle == '' || insertTextArea == '') {
 	    	alert('모두입력해주세요!');
 	    	isResult    = false;
+	    } else if(insertTitle.length > 32) {
+	    	alert('제목은 30자까지만 입력이 가능합니다.');
 	    } else if(insertPwdcheck == true && insertboardPWd == '') {
 	    	alert('비밀번호 입력 해주세요');
 	    	isResult    = false;
@@ -612,6 +614,8 @@ function managementFreQuentlyInsertBoard() {
 		
 		if(asked == '' || question =='') {
 			alert('모두입력해주세요');
+		} else if(question.length > 32) {
+			alert('제목은 30자까지만 등록이 가능합니다.');
 		} else {
 			$.post(url, params, cbf)
 		}
@@ -619,7 +623,7 @@ function managementFreQuentlyInsertBoard() {
 
 //수정하는 폼으로 가기
 function managementFreQuentlyUpdateBoard() {
-	var no      = $(this).attr('data-clickManageNum');
+	var no = $(this).attr('data-clickManageNum');
 		
 	url    = '/movie/mainService/managementUpdateBoard',
 	params = { 'no' : no},

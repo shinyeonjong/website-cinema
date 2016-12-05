@@ -11,7 +11,7 @@
 	<label class="screeningModify__label">영화제목</label>
 	<select class="js_selectMovieTitle screeningModify__input">
 		<c:forEach items="${movieList }" var="movieTitle">
-			<option>${movieTitle }</option>
+			<option class="js_selectItems" data-movie-screening-date="${movieTitle.movieReleaseDate}">${movieTitle.movieTitle }</option>
 		</c:forEach>
 	</select>
 	

@@ -174,7 +174,7 @@ function locationInsertMovie() {
 
 function locationEventPage() {
 	var noticeNo = $(this).data('noticeNo');
-	location.href='/movie/mainService/noticeBoardView?noticeNo=' + noticeNo;
+	location.href='/movie/mainService/noticeBoardView?noticePage=1&noticeNo=' + noticeNo;
 }
 
 function setEventTemplate() {

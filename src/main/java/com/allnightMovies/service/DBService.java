@@ -15,6 +15,7 @@ import com.allnightMovies.model.data.cinemaInfo.CinemaQuestionBoardDTO;
 import com.allnightMovies.model.data.cinemaInfo.CinemaSeatDTO;
 import com.allnightMovies.model.data.cinemaInfo.CinemaSeatReserveInfo;
 import com.allnightMovies.model.data.movieInfo.MainPageEventDTO;
+import com.allnightMovies.model.data.movieInfo.ManagerMovieTimeAddDTO;
 import com.allnightMovies.model.data.movieInfo.ManagerScreeningPlannedUpdateDTO;
 import com.allnightMovies.model.data.movieInfo.MovieBasicInfo;
 import com.allnightMovies.model.data.movieInfo.MovieBasicInfoDTO;
@@ -215,6 +216,10 @@ public class DBService {
 	
 	public Integer movieReleaseDateCheck(Integer movieNo) {
 		return dbMapper.movieReleaseDateCheck(movieNo);
+	}
+	
+	public List<ManagerMovieTimeAddDTO> getManagerMovieTitleScreeningDate() {
+		return dbMapper.getManagerMovieTitleScreeningDate();
 	}
 	
 /** jung. 상영시간표 **/ //TODO 수진

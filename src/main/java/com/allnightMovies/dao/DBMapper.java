@@ -10,6 +10,7 @@ import com.allnightMovies.model.data.cinemaInfo.CinemaQuestionBoardDTO;
 import com.allnightMovies.model.data.cinemaInfo.CinemaSeatDTO;
 import com.allnightMovies.model.data.cinemaInfo.CinemaSeatReserveInfo;
 import com.allnightMovies.model.data.movieInfo.MainPageEventDTO;
+import com.allnightMovies.model.data.movieInfo.ManagerMovieTimeAddDTO;
 import com.allnightMovies.model.data.movieInfo.ManagerScreeningPlannedUpdateDTO;
 import com.allnightMovies.model.data.movieInfo.MovieBasicInfo;
 import com.allnightMovies.model.data.movieInfo.MovieBasicInfoDTO;
@@ -81,7 +82,7 @@ public interface DBMapper {
 	public void managerTicketCancel(String ticketNum);
 	public Integer searchScreeningPlannedCnt(ManagerScreeningPlannedUpdateDTO dto);
 	public Integer insertMovieScreeningInfo(ManagerScreeningPlannedUpdateDTO dto);
-	
+	public List<ManagerMovieTimeAddDTO> getManagerMovieTitleScreeningDate();
 /** ji. manager movie delete **/
 	public void movieDelete(Integer movieNo);
 	public int movieReleaseDateCheck(Integer movieNo);

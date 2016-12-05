@@ -19,12 +19,10 @@
 				<c:choose>
 					<c:when test="${questionBoardList.getIsPwd() == 1 }">
 						<input class="boardViewwriteBoard js_questionViewBoardTitle" type="text" value="${questionBoardList.getTitle() }" readonly>
-						<input class="boardViewcheck" type="checkbox" checked disabled ><label>비밀글</label>
 					</c:when>
 					
 					<c:otherwise>
 						<input class="boardViewwriteBoard js_questionViewBoardTitle" type="text" value="${questionBoardList.getTitle() }" readonly>
-						<input class="boardViewcheck" type="checkbox" disabled ><label>비밀글</label>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -40,7 +38,7 @@
 			<div class="questionBoardView-sub">
 				<div class="questionBoardView_subject">
 					<label class="boardViewSub">내용</label>
-					<textarea class="boardViewTextarea"  readonly>${questionBoardList.getContent() }</textarea>
+					<pre class="boardViewTextarea" >${questionBoardList.getContent() }</pre>
 				</div>
 			</div>
 			

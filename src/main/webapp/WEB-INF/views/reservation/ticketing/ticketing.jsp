@@ -6,8 +6,16 @@
 		<div class="movie-title   border-dashed">
 			<h4 class="subject">영화</h4>
 			<ul class="movie-title__body">
+			
 				<c:forEach items="${movieTitle }" var="title">
-					<li class="js_movieTitleClick   movie-title__body__li  cursor">
+					<c:choose>
+						<c:when test="${title.movieTitle ==  userChoiceInfo.movieTitle}">
+							<li class="js_movieTitleClick js_userChoiceMovieTitle movie-title__body__li cursor">
+						</c:when>
+						<c:otherwise>
+							<li class="js_movieTitleClick movie-title__body__li cursor">							
+						</c:otherwise>
+					</c:choose>
 						<label class="movie-title__body__limit cursor limit${title.movieAgeLimit }">
 							${title.movieAgeLimit }
 						</label> 

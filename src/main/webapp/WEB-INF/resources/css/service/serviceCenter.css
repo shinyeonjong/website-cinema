@@ -189,10 +189,10 @@ label.js_questionBoard_title {
 	width: 50px;
 }
 .toptitle {
-	width: 480px;
+	width: 496px;
 }
 .title {
-	width: 460px;
+	width: 475px;
 	text-align: left;
 	margin-left: 20px;
 }
@@ -407,31 +407,35 @@ button.QuestionBoardReCheckPWd_checkBtn2 {
 /*수정전폼*/
 .questionBoardView-detail {
     margin-bottom: 14px;
+    border-bottom: 2px dashed darkgray;
 }
 
 .questionBoardView-title {
     margin-bottom: 14px;
+    width: 700px;
+    margin-left: 26px;
+	border-bottom: 2px dashed darkgray;
 }
 
 input.boardwriteBoardViewinput {
     outline: none;
     margin-left: 14px;
-     height: 30px;
-      font-family: 'Jeju Gothic', serif;
-          font-size: 18px;
+    height: 30px;
+    font-family: 'Jeju Gothic', serif;
+    font-size: 18px;
 }
 
 
 label.boardViewtitle {
     font-size: 20px;
-    margin-left: 30px;
+    margin-left: 10px;
 }
 
 input.boardViewwriteBoard {
     outline: none;
     margin-left: 27px;
     height: 30px;
-    width: 265px;
+    width: 334px;
     border : none;
     font-family: 'Jeju Gothic', serif;
     font-size: 18px;
@@ -449,10 +453,6 @@ input.boardwriteBoardViewinput {
     border: none;
 }
 
-.questionBoardView-title {
-    margin-bottom: 14px;
-}
-
 label.boardViewwriter,
 label.boardViewwriter {
     font-size: 20px;
@@ -468,6 +468,7 @@ label.boardViewSub {
 	padding-right: 24px;
     font-size: 22px;
     width: 46px;
+    margin-top: 16px;
 }
 
 .questionBoardView-detail {
@@ -768,7 +769,7 @@ textarea.managementQuestionUpdateTextarea {
 }
 
 .managementQuestionwriteBoard {
-    width: 620px;
+    width: 703px;
     font-size: 18px;
     height: 25px;
     font-family: 'Jeju Gothic', serif;
@@ -996,3 +997,13 @@ textarea.ReplyBoardTextarea {
     justify-content: center;
 }
 
+pre.boardViewTextarea {
+	font-family: 'Jeju Gothic', serif;
+    margin: 0px;
+    font-size: 18px;
+    border: 2.5px solid darkgray;
+    border-radius: 10px;
+    padding: 14px;
+    width: 595px;
+    white-space: pre-line;
+}
